@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Katlego Mothapo — Speaker Profile</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #111110;
+    --ink-soft: #2b2b28;
+    --muted: #7a7a72;
+    --faint: #a8a89e;
+    --line: #e8e6df;
+    --bg: #fbfaf6;
+    --bg-deep: #f4f2eb;
+    --accent: #a8442a;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #e8e6df;
+    color: var(--ink);
+    font-size: 11px;
+    line-height: 1.55;
+    padding: 40px 20px;
+  }
+
+  /* ============ PAGE ============ */
+  .page {
+    width: 210mm;
+    height: 297mm;
+    margin: 0 auto 24px;
+    background: var(--bg);
+    padding: 14mm 14mm 12mm 14mm;
+    box-shadow: 0 2px 24px rgba(0,0,0,0.08);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  @media print {
+    body { background: white; padding: 0; font-size: 10px; }
+    .page {
+      width: 100%;
+      height: 297mm;
+      margin: 0;
+      box-shadow: none;
+      page-break-after: always;
+    }
+    .page:last-child { page-break-after: auto; }
+    .no-print { display: none !important; }
+    @page { size: A4; margin: 0; }
+  }
+
+  /* ============ HEADER ============ */
+  .header {
+    display: grid;
+    grid-template-columns: 1fr 44mm;
+    gap: 8mm;
+    align-items: start;
+    padding-bottom: 5mm;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 5mm;
+  }
+
+  .brand-name {
+    font-family: 'Fraunces', serif;
+    font-size: 32px;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    font-weight: 500;
+    margin-bottom: 5px;
+  }
+  .brand-name span { color: var(--accent); }
+
+  .brand-tag {
+    font-size: 9px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 500;
+    margin-bottom: 14px;
+  }
+
+  .brand-conviction {
+    font-family: 'Fraunces', serif;
+    font-size: 13px;
+    font-style: italic;
+    color: var(--ink-soft);
+    line-height: 1.4;
+    letter-spacing: -0.015em;
+    max-width: 92mm;
+    margin-bottom: 10px;
+  }
+
+  .brand-oneline {
+    font-size: 10px;
+    color: var(--muted);
+    line-height: 1.55;
+    max-width: 100mm;
+  }
+
+  /* Portrait */
+  .portrait {
+    width: 100%;
+    aspect-ratio: 4/5;
+    background: var(--bg-deep);
+    border: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--faint);
+    font-size: 7px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 8px;
+    overflow: hidden;
+  }
+  .portrait img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* ============ PAGE 1 GRID ============ */
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 62mm;
+    gap: 8mm;
+    flex: 1;
+    min-height: 0;
+  }
+
+  .col-left, .col-right {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ============ SECTIONS ============ */
+  .section { margin-bottom: 5mm; }
+  .section:last-child { margin-bottom: 0; }
+
+  .section-title {
+    font-size: 7.5px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 600;
+    margin-bottom: 2.5mm;
+    padding-bottom: 1.2mm;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .bio {
+    font-size: 10px;
+    color: var(--ink-soft);
+    line-height: 1.65;
+  }
+  .bio p { margin-bottom: 2.5mm; }
+  .bio p:last-child { margin-bottom: 0; }
+
+  /* ============ TALKS ============ */
+  .talk {
+    padding: 2.8mm 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .talk:last-child { border-bottom: none; padding-bottom: 0; }
+  .talk:first-child { padding-top: 0; }
+
+  .talk-title {
+    font-family: 'Fraunces', serif;
+    font-size: 12.5px;
+    letter-spacing: -0.02em;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 0.8mm;
+    line-height: 1.2;
+  }
+
+  .talk-sub {
+    font-size: 8.5px;
+    color: var(--accent);
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    margin-bottom: 1.4mm;
+    line-height: 1.4;
+  }
+
+  .talk-desc {
+    font-size: 9.5px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* ============ FORMATS TABLE ============ */
+  .formats {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 9.5px;
+  }
+  .formats td {
+    padding: 1.8mm 0;
+    border-bottom: 1px solid var(--line);
+    color: var(--ink-soft);
+    vertical-align: top;
+  }
+  .formats tr:last-child td { border-bottom: none; }
+  .formats td:first-child { font-weight: 500; color: var(--ink); padding-right: 4mm; }
+  .formats td:last-child { color: var(--muted); font-size: 9px; text-align: right; }
+
+  /* ============ LISTS ============ */
+  .list { list-style: none; }
+  .list li {
+    font-size: 9.5px;
+    color: var(--ink-soft);
+    padding: 1.2mm 0;
+    padding-left: 4mm;
+    position: relative;
+    line-height: 1.5;
+  }
+  .list li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--faint);
+  }
+
+  /* ============ RECEIPTS ============ */
+  .receipt {
+    padding: 2.2mm 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .receipt:last-child { border-bottom: none; padding-bottom: 0; }
+  .receipt:first-child { padding-top: 0; }
+  .receipt-title {
+    font-family: 'Fraunces', serif;
+    font-size: 10.5px;
+    color: var(--ink);
+    letter-spacing: -0.015em;
+    margin-bottom: 0.5mm;
+    line-height: 1.3;
+  }
+  .receipt-meta {
+    font-size: 8.5px;
+    color: var(--faint);
+    letter-spacing: 0.05em;
+    margin-bottom: 0.8mm;
+  }
+  .receipt-desc {
+    font-size: 9px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* ============ TESTIMONIAL ============ */
+  .testimonial {
+    font-family: 'Fraunces', serif;
+    font-size: 10.5px;
+    line-height: 1.55;
+    color: var(--ink);
+    font-style: italic;
+    padding: 2.5mm 0 2.5mm 4mm;
+    border-left: 2px solid var(--accent);
+    margin-bottom: 2.5mm;
+  }
+  .testimonial:last-child { margin-bottom: 0; }
+  .testimonial-attrib {
+    font-size: 8.5px;
+    color: var(--muted);
+    font-style: normal;
+    font-family: 'Inter', sans-serif;
+    margin-top: 1.2mm;
+    letter-spacing: 0.02em;
+  }
+
+  /* ============ RIGHT PORTRAIT ============ */
+  .right-portrait { margin-bottom: 5mm; }
+
+  /* ============ CONTACT ============ */
+  .contact-block {
+    font-size: 9.5px;
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+  .contact-block strong {
+    display: block;
+    font-size: 7.5px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--faint);
+    font-weight: 500;
+    margin-bottom: 0.8mm;
+    margin-top: 2.5mm;
+  }
+  .contact-block strong:first-child { margin-top: 0; }
+  .contact-block a { color: var(--ink); text-decoration: none; }
+
+  /* ============ FOOTER ============ */
+  .footer {
+    margin-top: 4mm;
+    padding-top: 3mm;
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: 7.5px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--faint);
+    flex-shrink: 0;
+  }
+  .footer-tag {
+    font-family: 'Fraunces', serif;
+    font-size: 10px;
+    letter-spacing: -0.01em;
+    text-transform: none;
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  /* ============ PAGE 2 ============ */
+  .page-header-small {
+    font-size: 7.5px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 600;
+    margin-bottom: 6mm;
+    padding-bottom: 2mm;
+    border-bottom: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    flex-shrink: 0;
+  }
+
+  .page-title {
+    font-family: 'Fraunces', serif;
+    font-size: 26px;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+    margin-bottom: 3mm;
+    line-height: 1.1;
+  }
+
+  .page-intro {
+    font-size: 10.5px;
+    color: var(--ink-soft);
+    line-height: 1.65;
+    margin-bottom: 7mm;
+    max-width: 150mm;
+  }
+
+  /* ============ IP BLOCKS ============ */
+  .ip-block {
+    padding: 3mm 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .ip-block:last-child { border-bottom: none; padding-bottom: 0; }
+  .ip-block:first-child { padding-top: 0; }
+
+  .ip-name {
+    font-family: 'Fraunces', serif;
+    font-size: 12px;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+    margin-bottom: 1.2mm;
+    line-height: 1.2;
+  }
+  .ip-desc {
+    font-size: 9.5px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+  .ip-desc strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  /* ============ TWO-COLUMN PAGE 2 ============ */
+  .page2-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8mm;
+    flex: 1;
+    min-height: 0;
+  }
+
+  .page2-col {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+
+  /* ============ PRINT BUTTON ============ */
+  .print-btn {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    padding: 12px 22px;
+    background: var(--ink);
+    color: var(--bg);
+    border: none;
+    border-radius: 100px;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    transition: background 0.2s;
+    z-index: 100;
+  }
+  .print-btn:hover { background: var(--accent); }
+</style>
+</head>
+<body>
+
+<button class="print-btn no-print" onclick="window.print()">Print / Save as PDF</button>
+
+<!-- ============================================================
+     PAGE 1 — PRIMARY PROFILE
+     ============================================================ -->
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div>
+      <div class="brand-name">Katlego Mothapo<span>.</span></div>
+      <div class="brand-tag">Creator · Entrepreneur · Speaker</div>
+      <div class="brand-conviction">Building a life you respect.</div>
+      <div class="brand-oneline">A South African creator and entrepreneur helping young people — particularly young men — build themselves mentally, physically, financially and spiritually.</div>
+    </div>
+    <div class="portrait">
+      <!-- IMAGE 1 — PORTRAIT -->
+      <img src="katlego-portrait.jpg" alt="Katlego Mothapo — portrait" onerror="this.style.display='none'; this.parentNode.innerHTML='[ Katlego Portrait ]';" />
+    </div>
+  </div>
+
+  <!-- BODY GRID -->
+  <div class="grid">
+
+    <!-- LEFT COLUMN -->
+    <div class="col-left">
+
+      <div class="section">
+        <div class="section-title">Bio</div>
+        <div class="bio">
+          <p>Katlego Mothapo is a South African creator and entrepreneur focused on the realities of becoming a disciplined, capable and self-respecting person in the modern world.</p>
+          <p>Through his content, conversations and work, he explores masculinity, money, fitness, relationships, faith, discipline, entrepreneurship and personal responsibility. His work is primarily aimed at young people who want more from themselves but need the clarity, frameworks and standards to turn ambition into action.</p>
+          <p>His approach is direct, philosophical and practical. Rather than positioning himself as someone who has already figured everything out, he shares what he is learning, building and testing while challenging others to take responsibility for the person they are becoming.</p>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">Signature Talks</div>
+
+        <div class="talk">
+          <div class="talk-title">Build a Life You Respect</div>
+          <div class="talk-sub">The architecture of a meaningful, capable life</div>
+          <div class="talk-desc">Katlego's signature keynote. It brings together mind, character, relationships, health, finances and purpose. Success isn't about building a life that looks impressive. It's about building one you can respect.</div>
+        </div>
+
+        <div class="talk">
+          <div class="talk-title">From Potential to Capability</div>
+          <div class="talk-sub">Why potential means nothing without development</div>
+          <div class="talk-desc">The gap between being told you're talented and actually becoming someone an organisation, family and society can rely on. The world doesn't reward potential. It rewards what you can consistently do.</div>
+        </div>
+
+        <div class="talk">
+          <div class="talk-title">The Standard</div>
+          <div class="talk-sub">Who are you when nobody is watching?</div>
+          <div class="talk-desc">Standards, integrity, discipline, responsibility, self-respect and keeping promises to yourself. Your standards determine the person you become long before your achievements do.</div>
+        </div>
+
+        <div class="talk">
+          <div class="talk-title">The Attention War</div>
+          <div class="talk-sub">How to stay human in an economy designed to distract you</div>
+          <div class="talk-desc">Social media, algorithms, comparison and constant stimulation — but the deeper subject is agency. If you don't decide what deserves your attention, someone else will.</div>
+        </div>
+
+        <div class="talk">
+          <div class="talk-title">The Long Game</div>
+          <div class="talk-sub">How to build a life when everyone else is thinking in days</div>
+          <div class="talk-desc">Ambition, money, purpose and compounding. Skills, reputation, health, relationships, capital, knowledge, character. A meaningful life is built through decisions whose rewards often arrive much later.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- RIGHT COLUMN -->
+    <div class="col-right">
+
+      <div class="right-portrait">
+        <div class="portrait">
+          <!-- IMAGE 2 — SPEAKING SHOT -->
+          <img src="katlego-speaking.jpg" alt="Katlego Mothapo — speaking" onerror="this.style.display='none'; this.parentNode.innerHTML='[ Katlego Speaking ]';" />
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">Formats</div>
+        <table class="formats">
+          <tbody>
+            <tr><td>Keynote</td><td>45–60 min</td></tr>
+            <tr><td>Fireside</td><td>30–60 min</td></tr>
+            <tr><td>Virtual Keynote</td><td>45–90 min</td></tr>
+            <tr><td>Panel</td><td>45–90 min</td></tr>
+            <tr><td>Half-Day Workshop</td><td>3–4 hrs</td></tr>
+            <tr><td>Moderated Conversation</td><td>30–60 min</td></tr>
+            <tr><td>Creator / Youth Discussion</td><td>30–90 min</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="section">
+        <div class="section-title">Who Books Katlego</div>
+        <ul class="list">
+          <li>Corporate leadership teams</li>
+          <li>Founder communities</li>
+          <li>Universities and business schools</li>
+          <li>Faith and values-based organisations</li>
+          <li>Industry conferences</li>
+          <li>Podcasts and media</li>
+          <li>Youth and student audiences</li>
+          <li>Young professional communities</li>
+          <li>Creator communities</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <div class="section-title">Receipts</div>
+        <div class="receipt">
+          <div class="receipt-title">Built to Be Legends</div>
+          <div class="receipt-meta">Emeris Ruimsig · South Africa · 2026</div>
+          <div class="receipt-desc">Speaking engagement on personal development, possibility and personal growth. Audience: 150.</div>
+        </div>
+        <div class="receipt">
+          <div class="receipt-title">The Worst Experience Podcast</div>
+          <div class="receipt-meta">2026 · Scheduled for release</div>
+          <div class="receipt-desc">Long-form podcast conversation on discipline, growth and personal responsibility.</div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">Testimonial</div>
+        <div class="testimonial">
+          “You are more than deserving to be up on that stage. You were such a great speaker and did a fantastic job.”
+          <div class="testimonial-attrib">— Khanyi Ndabambi · EMERIS Representative</div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">Booking</div>
+        <div class="contact-block">
+          <strong>Email</strong>
+          <a href="mailto:katlegomothapo10@gmail.com">katlegomothapo10@gmail.com</a>
+          <strong>Based in</strong>
+          Johannesburg, South Africa
+          <strong>International</strong>
+          Available worldwide
+          <strong>Fee</strong>
+          On enquiry
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <span>Katlego Mothapo · Speaker Profile</span>
+    <span class="footer-tag">Build a life you respect.</span>
+  </div>
+
+</div>
+
+<!-- ============================================================
+     PAGE 2 — FRAMEWORKS, IP & POSITIONING
+     ============================================================ -->
+<div class="page">
+
+  <div class="page-header-small">
+    <span>Katlego Mothapo</span>
+    <span>Frameworks &amp; IP</span>
+  </div>
+
+  <div class="page-title">The work behind<br/>the talks.</div>
+
+  <div class="page-intro">Everything Katlego speaks about is built on frameworks, not feelings. Below are the systems, platforms and ideas that shape his thinking — available to be taught, licensed, and applied inside organisations, cohorts and communities.</div>
+
+  <div class="page2-grid">
+
+    <!-- LEFT COLUMN -->
+    <div class="page2-col">
+
+      <div class="section">
+        <div class="section-title">The Framework</div>
+        <div class="ip-block">
+          <div class="ip-name">Turning ambition into a structured life</div>
+          <div class="ip-desc">The Framework is Katlego's approach to turning ambition into a structured life. It brings together the major areas that shape personal development — identity, discipline, money, physical development, relationships, purpose and execution.</div>
+          <div class="ip-desc" style="margin-top:1.5mm;">Rather than treating self-improvement as a collection of isolated habits, The Framework approaches growth as a system. The objective is to help people move from simply wanting a better life to deliberately constructing one.</div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">THE IRON</div>
+        <div class="ip-block">
+          <div class="ip-name">Becoming stronger through discipline, pressure and deliberate self-mastery</div>
+          <div class="ip-desc">THE IRON represents the idea that character is forged rather than simply discovered. It is about choosing standards, accepting discomfort and deliberately doing the work required to become capable of carrying greater responsibility.</div>
+          <div class="ip-desc" style="margin-top:1.5mm;">The concept connects physical strength with mental resilience, discipline, purpose and personal responsibility. The goal is not to become emotionally cold or hard toward others. It is to become harder to break while remaining grounded, principled and human.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- RIGHT COLUMN -->
+    <div class="page2-col">
+
+      <div class="section">
+        <div class="section-title">Platforms &amp; Media</div>
+        <div class="ip-block">
+          <div class="ip-name">KatlegoUnfiltered</div>
+          <div class="ip-desc">Katlego's personal media platform exploring masculinity, money, fitness, relationships, faith, discipline, entrepreneurship and personal development. Content is direct, philosophical and practical — built for young people who want more from themselves but need the standards to act on it.</div>
+        </div>
+        <div class="ip-block">
+          <div class="ip-name">Framework Media</div>
+          <div class="ip-desc">The broader creative and business ecosystem through which Katlego develops ideas, content and digital products. Framework Media is the umbrella under which The Framework, THE IRON and future IP will be built, taught and licensed.</div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">Positioning</div>
+        <div class="ip-block">
+          <div class="ip-name">Person first. Speaker leading.</div>
+          <div class="ip-desc">Katlego is not a motivational speaker. He is a creator and entrepreneur whose ideas naturally translate into keynotes, workshops, conversations, panels and media. Speaking is the commercial entry point — but the larger brand is built around the person, his ideas, and the work he is creating.</div>
+          <div class="ip-desc" style="margin-top:1.5mm;">His message is ultimately about responsibility, discipline, character, purpose and building a meaningful life.</div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">Booking</div>
+        <div class="contact-block">
+          <strong>Email</strong>
+          <a href="mailto:katlegomothapo10@gmail.com">katlegomothapo10@gmail.com</a>
+          <strong>Based in</strong>
+          Johannesburg, South Africa · Available internationally
+          <strong>Enquiries</strong>
+          Include event name, date, location, audience size, format and budget range.
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <span>Katlego Mothapo · 02</span>
+    <span class="footer-tag">Build a life you respect.</span>
+  </div>
+
+</div>
+
+</body>
+</html>
