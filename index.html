@@ -8,7 +8,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-  /* ============ TOKENS ============ */
   :root {
     --ink: #111110;
     --ink-soft: #2b2b28;
@@ -29,22 +28,21 @@
     background: #d8d6cf;
     color: var(--ink);
     font-size: 11px;
-    line-height: 1.55;
+    line-height: 1.5;
     padding: 40px 20px;
   }
 
-  /* ============ PAGE ============ */
   .page {
     width: 210mm;
     height: 297mm;
     margin: 0 auto 24px;
     background: var(--bg);
-    padding: 12mm 12mm 8mm 12mm;
+    padding: 11mm 12mm 7mm 12mm;
     box-shadow: 0 2px 24px rgba(0,0,0,0.1);
-    position: relative;
     display: flex;
     flex-direction: column;
     overflow: hidden;
+    position: relative;
   }
 
   @media print {
@@ -75,7 +73,7 @@
 
   .brand-name {
     font-family: 'Fraunces', serif;
-    font-size: 28px;
+    font-size: 27px;
     letter-spacing: -0.03em;
     line-height: 1;
     font-weight: 500;
@@ -89,22 +87,22 @@
     text-transform: uppercase;
     color: var(--muted);
     font-weight: 500;
-    margin-bottom: 10px;
+    margin-bottom: 9px;
   }
 
   .brand-conviction {
     font-family: 'Fraunces', serif;
-    font-size: 12px;
+    font-size: 11.5px;
     font-style: italic;
     color: var(--ink-soft);
     line-height: 1.35;
     letter-spacing: -0.015em;
     max-width: 92mm;
-    margin-bottom: 6px;
+    margin-bottom: 5px;
   }
 
   .brand-oneline {
-    font-size: 9px;
+    font-size: 8.5px;
     color: var(--muted);
     line-height: 1.5;
     max-width: 100mm;
@@ -139,7 +137,7 @@
     display: grid;
     grid-template-columns: 1fr 60mm;
     gap: 6mm;
-    flex: 1;
+    flex: 1 1 0;
     min-height: 0;
     overflow: hidden;
   }
@@ -147,38 +145,37 @@
   .col-left, .col-right {
     min-width: 0;
     min-height: 0;
+    height: 100%;
     display: flex;
     flex-direction: column;
     overflow: hidden;
   }
 
   /* ============ SECTIONS ============ */
-  .section { margin-bottom: 3.5mm; }
+  .section { margin-bottom: 3.2mm; }
   .section:last-child { margin-bottom: 0; }
 
   .section-title {
-    font-size: 7px;
+    font-size: 6.8px;
     letter-spacing: 0.22em;
     text-transform: uppercase;
     color: var(--muted);
     font-weight: 600;
-    margin-bottom: 1.8mm;
-    padding-bottom: 0.9mm;
+    margin-bottom: 1.6mm;
+    padding-bottom: 0.8mm;
     border-bottom: 1px solid var(--line);
   }
 
-  /* ============ BIO ============ */
   .bio {
-    font-size: 9px;
+    font-size: 8.5px;
     color: var(--ink-soft);
-    line-height: 1.55;
+    line-height: 1.5;
   }
-  .bio p { margin-bottom: 1.8mm; }
+  .bio p { margin-bottom: 1.5mm; }
   .bio p:last-child { margin-bottom: 0; }
 
-  /* ============ TALKS ============ */
   .talk {
-    padding: 2mm 0;
+    padding: 1.8mm 0;
     border-bottom: 1px solid var(--line);
   }
   .talk:last-child { border-bottom: none; padding-bottom: 0; }
@@ -186,54 +183,51 @@
 
   .talk-title {
     font-family: 'Fraunces', serif;
-    font-size: 11px;
+    font-size: 10.5px;
     letter-spacing: -0.02em;
     font-weight: 500;
     color: var(--ink);
-    margin-bottom: 0.5mm;
+    margin-bottom: 0.4mm;
     line-height: 1.2;
   }
 
   .talk-sub {
-    font-size: 7.5px;
+    font-size: 7.2px;
     color: var(--accent);
     font-weight: 500;
-    letter-spacing: 0.01em;
-    margin-bottom: 0.9mm;
-    line-height: 1.35;
+    margin-bottom: 0.8mm;
+    line-height: 1.3;
   }
 
   .talk-desc {
-    font-size: 8.5px;
+    font-size: 8.2px;
     color: var(--muted);
-    line-height: 1.5;
+    line-height: 1.45;
   }
 
-  /* ============ FORMATS TABLE ============ */
   .formats {
     width: 100%;
     border-collapse: collapse;
-    font-size: 8.5px;
+    font-size: 8.2px;
   }
   .formats td {
-    padding: 1.2mm 0;
+    padding: 1.1mm 0;
     border-bottom: 1px solid var(--line);
     color: var(--ink-soft);
     vertical-align: top;
   }
   .formats tr:last-child td { border-bottom: none; }
   .formats td:first-child { font-weight: 500; color: var(--ink); padding-right: 2mm; }
-  .formats td:last-child { color: var(--muted); font-size: 8px; text-align: right; white-space: nowrap; }
+  .formats td:last-child { color: var(--muted); font-size: 7.8px; text-align: right; white-space: nowrap; }
 
-  /* ============ LISTS ============ */
   .list { list-style: none; }
   .list li {
-    font-size: 8.5px;
+    font-size: 8.2px;
     color: var(--ink-soft);
-    padding: 0.8mm 0;
-    padding-left: 3.5mm;
+    padding: 0.7mm 0;
+    padding-left: 3.2mm;
     position: relative;
-    line-height: 1.4;
+    line-height: 1.35;
   }
   .list li::before {
     content: '—';
@@ -242,89 +236,83 @@
     color: var(--faint);
   }
 
-  /* ============ RECEIPTS ============ */
   .receipt {
-    padding: 1.6mm 0;
+    padding: 1.5mm 0;
     border-bottom: 1px solid var(--line);
   }
   .receipt:last-child { border-bottom: none; padding-bottom: 0; }
   .receipt:first-child { padding-top: 0; }
   .receipt-title {
     font-family: 'Fraunces', serif;
-    font-size: 9.5px;
+    font-size: 9px;
     color: var(--ink);
     letter-spacing: -0.015em;
     margin-bottom: 0.3mm;
     line-height: 1.25;
   }
   .receipt-meta {
-    font-size: 7.5px;
+    font-size: 7.2px;
     color: var(--faint);
     letter-spacing: 0.05em;
-    margin-bottom: 0.5mm;
+    margin-bottom: 0.4mm;
   }
   .receipt-desc {
-    font-size: 8px;
+    font-size: 7.8px;
     color: var(--muted);
-    line-height: 1.45;
+    line-height: 1.4;
   }
 
-  /* ============ TESTIMONIAL ============ */
   .testimonial {
     font-family: 'Fraunces', serif;
-    font-size: 9.5px;
-    line-height: 1.45;
+    font-size: 9px;
+    line-height: 1.4;
     color: var(--ink);
     font-style: italic;
-    padding: 2mm 0 2mm 3mm;
+    padding: 1.8mm 0 1.8mm 3mm;
     border-left: 2px solid var(--accent);
   }
   .testimonial-attrib {
-    font-size: 7.5px;
+    font-size: 7.2px;
     color: var(--muted);
     font-style: normal;
     font-family: 'Inter', sans-serif;
-    margin-top: 0.9mm;
+    margin-top: 0.8mm;
     letter-spacing: 0.02em;
   }
 
-  /* ============ RIGHT PORTRAIT ============ */
   .right-portrait {
-    margin-bottom: 3.5mm;
+    margin-bottom: 3mm;
     flex-shrink: 0;
   }
-  .right-portrait .portrait {
-    aspect-ratio: 5/4;
-  }
+  .right-portrait .portrait { aspect-ratio: 5/4; }
 
-  /* ============ CONTACT ============ */
   .contact-block {
-    font-size: 8.5px;
+    font-size: 8.2px;
     color: var(--ink-soft);
-    line-height: 1.5;
+    line-height: 1.45;
   }
   .contact-block strong {
     display: block;
-    font-size: 6.5px;
+    font-size: 6.3px;
     letter-spacing: 0.15em;
     text-transform: uppercase;
     color: var(--faint);
     font-weight: 500;
-    margin-bottom: 0.5mm;
-    margin-top: 1.8mm;
+    margin-bottom: 0.4mm;
+    margin-top: 1.5mm;
   }
   .contact-block strong:first-child { margin-top: 0; }
   .contact-block a { color: var(--ink); text-decoration: none; word-break: break-all; }
 
   /* ============ FOOTER ============ */
   .footer {
-    margin-top: 2.5mm;
-    padding-top: 2.5mm;
+    margin-top: 2mm;
+    padding-top: 2mm;
     border-top: 1px solid var(--line);
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    font-size: 7px;
+    font-size: 6.8px;
     letter-spacing: 0.15em;
     text-transform: uppercase;
     color: var(--faint);
@@ -332,7 +320,7 @@
   }
   .footer-tag {
     font-family: 'Fraunces', serif;
-    font-size: 9.5px;
+    font-size: 9px;
     letter-spacing: -0.01em;
     text-transform: none;
     color: var(--muted);
@@ -341,13 +329,13 @@
 
   /* ============ PAGE 2 ============ */
   .page-header-small {
-    font-size: 7px;
+    font-size: 6.8px;
     letter-spacing: 0.22em;
     text-transform: uppercase;
     color: var(--muted);
     font-weight: 600;
-    margin-bottom: 4mm;
-    padding-bottom: 1.5mm;
+    margin-bottom: 3.5mm;
+    padding-bottom: 1.3mm;
     border-bottom: 1px solid var(--line);
     display: flex;
     justify-content: space-between;
@@ -356,7 +344,7 @@
 
   .page-title {
     font-family: 'Fraunces', serif;
-    font-size: 22px;
+    font-size: 21px;
     letter-spacing: -0.03em;
     color: var(--ink);
     margin-bottom: 2.5mm;
@@ -365,16 +353,16 @@
   }
 
   .page-intro {
-    font-size: 9.5px;
+    font-size: 9px;
     color: var(--ink-soft);
-    line-height: 1.55;
-    margin-bottom: 5mm;
+    line-height: 1.5;
+    margin-bottom: 4.5mm;
     max-width: 150mm;
     flex-shrink: 0;
   }
 
   .ip-block {
-    padding: 2.2mm 0;
+    padding: 2mm 0;
     border-bottom: 1px solid var(--line);
   }
   .ip-block:last-child { border-bottom: none; padding-bottom: 0; }
@@ -382,25 +370,25 @@
 
   .ip-name {
     font-family: 'Fraunces', serif;
-    font-size: 10.5px;
+    font-size: 10px;
     letter-spacing: -0.015em;
     color: var(--ink);
-    margin-bottom: 0.9mm;
+    margin-bottom: 0.8mm;
     line-height: 1.2;
   }
   .ip-desc {
-    font-size: 8.5px;
+    font-size: 8.2px;
     color: var(--muted);
-    line-height: 1.5;
+    line-height: 1.45;
   }
-  .ip-desc + .ip-desc { margin-top: 1.4mm; }
+  .ip-desc + .ip-desc { margin-top: 1.2mm; }
   .ip-desc strong { color: var(--ink); font-weight: 500; }
 
   .page2-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 7mm;
-    flex: 1;
+    gap: 6mm;
+    flex: 1 1 0;
     min-height: 0;
     overflow: hidden;
   }
@@ -409,6 +397,8 @@
     display: flex;
     flex-direction: column;
     min-width: 0;
+    min-height: 0;
+    height: 100%;
     overflow: hidden;
   }
 
@@ -439,11 +429,10 @@
 <button class="print-btn no-print" onclick="window.print()">Print / Save as PDF</button>
 
 <!-- ============================================================
-     PAGE 1 — PRIMARY PROFILE
+     PAGE 1
      ============================================================ -->
 <div class="page">
 
-  <!-- HEADER -->
   <div class="header">
     <div>
       <div class="brand-name">Katlego Mothapo<span>.</span></div>
@@ -452,15 +441,12 @@
       <div class="brand-oneline">A South African creator and entrepreneur helping young people — particularly young men — build themselves mentally, physically, financially and spiritually.</div>
     </div>
     <div class="portrait">
-      <!-- IMAGE 1 — PORTRAIT -->
       <img src="katlego-portrait.jpg" alt="Katlego Mothapo — portrait" onerror="this.style.display='none'; this.parentNode.innerHTML='[ Katlego Portrait ]';" />
     </div>
   </div>
 
-  <!-- BODY GRID -->
   <div class="grid">
 
-    <!-- LEFT COLUMN -->
     <div class="col-left">
 
       <div class="section">
@@ -520,14 +506,26 @@
         </div>
       </div>
 
+      <div class="section">
+        <div class="section-title">Who Books Katlego</div>
+        <ul class="list">
+          <li>Corporate leadership teams</li>
+          <li>Founder communities</li>
+          <li>Universities and business schools</li>
+          <li>Faith and values-based organisations</li>
+          <li>Industry conferences</li>
+          <li>Podcasts and media</li>
+          <li>Youth and student audiences</li>
+          <li>Young professionals</li>
+        </ul>
+      </div>
+
     </div>
 
-    <!-- RIGHT COLUMN -->
     <div class="col-right">
 
       <div class="right-portrait">
         <div class="portrait">
-          <!-- IMAGE 2 — SPEAKING SHOT -->
           <img src="katlego-speaking.jpg" alt="Katlego Mothapo — speaking" onerror="this.style.display='none'; this.parentNode.innerHTML='[ Katlego Speaking ]';" />
         </div>
       </div>
@@ -545,20 +543,6 @@
             <tr><td>Creator / Youth Talk</td><td>30–90 min</td></tr>
           </tbody>
         </table>
-      </div>
-
-      <div class="section">
-        <div class="section-title">Who Books Katlego</div>
-        <ul class="list">
-          <li>Corporate leadership teams</li>
-          <li>Founder communities</li>
-          <li>Universities and business schools</li>
-          <li>Faith and values-based organisations</li>
-          <li>Industry conferences</li>
-          <li>Podcasts and media</li>
-          <li>Youth and student audiences</li>
-          <li>Young professionals</li>
-        </ul>
       </div>
 
       <div class="section">
@@ -585,7 +569,6 @@
 
   </div>
 
-  <!-- FOOTER -->
   <div class="footer">
     <span>Katlego Mothapo · Speaker Profile</span>
     <span class="footer-tag">Build a life you respect.</span>
@@ -594,7 +577,7 @@
 </div>
 
 <!-- ============================================================
-     PAGE 2 — FRAMEWORKS, IP & POSITIONING
+     PAGE 2
      ============================================================ -->
 <div class="page">
 
@@ -609,7 +592,6 @@
 
   <div class="page2-grid">
 
-    <!-- LEFT COLUMN -->
     <div class="page2-col">
 
       <div class="section">
@@ -640,7 +622,6 @@
 
     </div>
 
-    <!-- RIGHT COLUMN -->
     <div class="page2-col">
 
       <div class="section">
@@ -659,8 +640,8 @@
         <div class="section-title">What This Is Not</div>
         <div class="ip-block">
           <div class="ip-name">The work is intentionally positioned away from:</div>
-          <div class="ip-desc" style="margin-top:1.5mm;">Generic motivational speaking. Empty hustle culture. Anti-women or misogynistic rhetoric. Red-pill ideology. Men-versus-women narratives. Unrealistic promises of overnight success. Performative masculinity. Unsubstantiated expertise or credentials. Presenting himself as someone who has life completely figured out.</div>
-          <div class="ip-desc" style="margin-top:1.5mm;"><strong>His message is about responsibility, discipline, character, purpose and building a meaningful life.</strong></div>
+          <div class="ip-desc">Generic motivational speaking. Empty hustle culture. Anti-women or misogynistic rhetoric. Red-pill ideology. Men-versus-women narratives. Unrealistic promises of overnight success. Performative masculinity. Unsubstantiated expertise or credentials. Presenting himself as someone who has life completely figured out.</div>
+          <div class="ip-desc"><strong>His message is about responsibility, discipline, character, purpose and building a meaningful life.</strong></div>
         </div>
       </div>
 
@@ -680,7 +661,6 @@
 
   </div>
 
-  <!-- FOOTER -->
   <div class="footer">
     <span>Katlego Mothapo · 02</span>
     <span class="footer-tag">Build a life you respect.</span>
